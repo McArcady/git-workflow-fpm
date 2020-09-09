@@ -11,7 +11,20 @@ jobs:
     
     - name: Checkout
       uses: actions/checkout@v2
-      
+
+    - name: Fix world writable dirs
+      run: |
+        chmod go-w $HOME
+        sudo chmod -R go-w /home/linuxbrew
+        sudo chmod -R go-w /home/runner
+        sudo chmod -R go-w /usr/share
+        sudo chmod -R go-w /opt
+          
+    - name: Setup ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 2.3.8
+
     - name: Install fpm
       run: |
         sudo apt-get install ruby ruby-dev rubygems build-essential
@@ -19,4 +32,4 @@ jobs:
 
     - name: Test fpm
       run: |
-        ./arch.sh
+        /usr/local/bin/fpm -s dir -t pacman -n test --force --prefix /opt/pack --chdir pack
