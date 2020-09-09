@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Dwarf Fortress
+Categories=Game;
+Icon=%ICON%
+Exec=%EXEC%
+Terminal=false

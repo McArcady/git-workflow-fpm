@@ -19,4 +19,4 @@ jobs:
 
     - name: Test fpm
       run: |
-        ./test.sh
+        ./arch.sh
